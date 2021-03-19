@@ -1,3 +1,4 @@
+#BASE IMAGE: Centos7
 FROM centos:7
 ENV container docker
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
@@ -10,4 +11,13 @@ rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
 rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 VOLUME [ "/sys/fs/cgroup" ]
+
+
+#Usally Used Utils Install
+RUN set -x  yum update -y && yum upgrade -y  && \
+yum install -y epel-release && \
+yum install -y wget htop openssl vim unzip zip \
+openssh-server openssh-clients git \
+ncdu tree cronie ; yum clean all
+
 CMD ["/usr/sbin/init"]
