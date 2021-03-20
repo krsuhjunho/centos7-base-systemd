@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#VAR
+DOCKER_CONTAINER_NAME="centos7-base-systemd"
+CONTAINER_HOST_NAME="centos7-base-systemd"
+SSH_PORT=22455
+HTTP_PORT=8010
 BASE_IMAGE_NAME="ghcr.io/krsuhjunho/centos7-base-systemd"
 TIME_ZONE="Asia/Tokyo"
 TODAY=$(date "+%Y-%m-%d")
