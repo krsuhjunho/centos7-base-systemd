@@ -13,8 +13,8 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 VOLUME [ "/sys/fs/cgroup" ]
 #Usally Used Utils Install
 RUN  yum clean all; yum makecache; \ 
-yum install -yq epel-release && \
-yum install -yq wget htop openssl vim unzip zip \
+yum install -y -q epel-release && \
+yum install -y -q wget htop openssl vim unzip zip \
 openssh-server openssh-clients git \
-ncdu tree cronie ;yum update -yq; yum clean all
+ncdu tree cronie ;yum update -y -q; yum clean all
 CMD ["/usr/sbin/init"]
