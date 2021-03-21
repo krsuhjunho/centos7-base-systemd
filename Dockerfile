@@ -11,10 +11,26 @@ rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
 rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 VOLUME [ "/sys/fs/cgroup" ]
+
+
+
 #Usally Used Utils Install
-RUN  yum clean all; yum makecache; \ 
-yum install -y -q epel-release && \
-yum install -y -q wget htop openssl vim unzip zip \
-openssh-server openssh-clients git \
-ncdu tree cronie ;yum update -y -q; yum clean all
+RUN  \
+	yum clean all; \
+	yum makecache; \ 
+	yum install -y -q epel-release && \
+yum install -y -q wget \
+		  htop \	
+		  openssl \
+		  vim \	
+		  unzip \
+		  zip \
+		  openssh-server \
+		  openssh-clients \
+		  git \
+		ncdu tree cronie ;yum update -y -q; yum clean all
+
+
+
+
 CMD ["/usr/sbin/init"]
